@@ -81,7 +81,6 @@ All colors MUST be HSL.
     --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3);
     --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.4);
   }
-}
 
   body {
     @apply bg-background text-foreground;
