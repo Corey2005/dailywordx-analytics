@@ -4,13 +4,13 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/dailywordx-analytics/',
-  build: {
-    outDir: 'dist',
-  },
+  base: '/dailywordx-analytics/', // <-- repo name
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
+  },
+  build: {
+    outDir: 'dist',
   },
 })
