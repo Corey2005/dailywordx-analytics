@@ -6,11 +6,16 @@ export default defineConfig({
   plugins: [react()],
   base: '/dailywordx-analytics/',
   build: {
-    outDir: 'dist',
-    rollupOptions: {},
-    // prevent Vite from adding crossorigin
-    assetsDir: 'assets',
+  outDir: 'dist',
+  assetsDir: '', // <- important, removes the leading /assets
+  rollupOptions: {
+    output: {
+      entryFileNames: '[name].js',
+      chunkFileNames: '[name].js',
+      assetFileNames: '[name].[ext]',
+    },
   },
+},
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -20,3 +25,4 @@ export default defineConfig({
     cors: false, // ensure dev server doesn’t mess with headers
   }
 })
+
