@@ -6,14 +6,12 @@
 All colors MUST be HSL.
 */
 
-@layer utilities {
-  
+
+@layer base {
   .border-border {
     border-color: hsl(var(--border));
   }
-}
-
-@layer base {
+  
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
