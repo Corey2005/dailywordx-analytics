@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",  // very important for Vite + TSX
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
