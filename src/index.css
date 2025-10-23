@@ -6,6 +6,13 @@
 All colors MUST be HSL.
 */
 
+@layer utilities {
+  
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -88,9 +95,3 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
-
-@layer utilities {
-  
-  .border-border {
-    border-color: hsl(var(--border));
-  }
