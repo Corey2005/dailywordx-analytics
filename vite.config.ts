@@ -7,18 +7,20 @@ export default defineConfig({
   base: '/dailywordx-analytics/',
   build: {
     outDir: 'dist',
-    assetsDir: '', // Keeps files flat (no /assets/ prefix)
+    assetsDir: '', // Flat structure
     rollupOptions: {
       input: {
-        main: 'index.html',      // Login page entry
-        dashboard: 'dashboard.html' // Dashboard entry
+        main: 'index.html',       // Login page
+        dashboard: 'dashboard.html' // Dashboard with React
       },
       output: {
         entryFileNames: '[name].js',
         chunkFileNames: '[name].js',
         assetFileNames: '[name].[ext]',
+        manualChunks: undefined,
       },
     },
+    copyPublicDir: true, // Ensure HTML files are copied
   },
   resolve: {
     alias: {
@@ -26,6 +28,6 @@ export default defineConfig({
     },
   },
   server: {
-    cors: false, // Prevents dev server header issues
+    cors: false,
   }
 })
