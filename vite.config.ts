@@ -7,27 +7,20 @@ export default defineConfig({
   base: '/dailywordx-analytics/',
   build: {
     outDir: 'dist',
-    assetsDir: '', // Flat structure
     rollupOptions: {
       input: {
-        main: 'index.html',       // Login page (static)
-        dashboard: 'dashboard.html' // React dashboard entry
+        main: path.resolve(__dirname, 'index.html'),
+        dashboard: path.resolve(__dirname, 'dashboard.html'),
       },
       output: {
         entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
         assetFileNames: '[name].[ext]',
-        manualChunks: undefined,
       },
     },
-    copyPublicDir: true, // Copy static files (index.html)
   },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
-  server: {
-    cors: false,
-  }
 })
