@@ -23,13 +23,12 @@
   <body>
     <div id="root"></div>
     <script>
-    // Simplified redirect logic
     document.addEventListener('DOMContentLoaded', () => {
         const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
         if (!isLoggedIn) {
-            window.location.href = './index.html';
+            window.location.href = '/dailywordx-analytics/index.html';
         } else {
-          window.location.href = './dashboard.html';
+            window.location.href = '/dailywordx-analytics/dashboard.html';
         }
     });
 </script>
