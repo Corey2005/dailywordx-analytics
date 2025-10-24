@@ -6,23 +6,26 @@ export default defineConfig({
   plugins: [react()],
   base: '/dailywordx-analytics/',
   build: {
-  outDir: 'dist',
-  assetsDir: '', // <- important, removes the leading /assets
-  rollupOptions: {
-    output: {
-      entryFileNames: '[name].js',
-      chunkFileNames: '[name].js',
-      assetFileNames: '[name].[ext]',
+    outDir: 'dist',
+    assetsDir: '', // Keeps files flat (no /assets/ prefix)
+    rollupOptions: {
+      input: {
+        main: 'index.html',      // Login page entry
+        dashboard: 'dashboard.html' // Dashboard entry
+      },
+      output: {
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
+        assetFileNames: '[name].[ext]',
+      },
     },
   },
-},
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
   server: {
-    cors: false, // ensure dev server doesn’t mess with headers
+    cors: false, // Prevents dev server header issues
   }
 })
-
