@@ -13,6 +13,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <script type="module" src="/src/main.tsx"></script>
     <link rel="icon" href="/dailywordx-analytics/favicon.ico" />
   </head>
   <body>
@@ -23,12 +24,9 @@
             if (!isLoggedIn) {
               window.location.href = '/dailywordx-analytics/index.html';
             } else {
-              // No self-redirect - serve static content or redirect to React app
-              // For now, just display a message (replace with actual dashboard later)
-              document.getElementById('root').innerHTML = '<h1>Welcome to DailyWordX Dashboard!</h1>';
+              
             }
           });
     </script>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
