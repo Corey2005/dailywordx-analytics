@@ -1,33 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DailyWordX Analytics - X Account Dashboard</title>
-    <meta name="description" content="Analytics dashboard for DailyWordX automated vocabulary expansion on X (Twitter)" />
-    <meta name="author" content="DailyWordX" />
-    <meta property="og:title" content="DailyWordX Analytics Dashboard" />
-    <meta property="og:description" content="Track engagement metrics and post performance for automated vocabulary content on X" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    <link rel="icon" href="/dailywordx-analytics/favicon.ico" />
-    <script type="module" crossorigin src="/dailywordx-analytics/dashboard.js"></script>
-    <link rel="stylesheet" crossorigin href="/dailywordx-analytics/dashboard.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script>
-          document.addEventListener('DOMContentLoaded', () => {
-            const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-            if (!isLoggedIn) {
-              window.location.href = '/dailywordx-analytics/index.html';
-            } else {
-              
-            }
-          });
-    </script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DailyWordX Dashboard</title>
+  <link rel="icon" href="/dailywordx-analytics/favicon.ico" />
+  <script type="module" crossorigin src="/dailywordx-analytics/dashboard.js"></script>
+  <link rel="stylesheet" crossorigin href="/dailywordx-analytics/dashboard.css">
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    // simple client-side gate: redirect if not logged in
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('loggedIn') !== 'true') {
+        window.location.href = '/dailywordx-analytics/index.html';
+      }
+    });
+  </script>
+
+  <!-- DEV: point to source entry. Vite replaces this for production build -->
+</body>
 </html>
