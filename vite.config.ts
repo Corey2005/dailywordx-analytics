@@ -5,6 +5,11 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   base: '/dailywordx-analytics/',
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
   build: {
     outDir: 'dist',
     rollupOptions: {
@@ -14,13 +19,11 @@ export default defineConfig({
       },
       output: {
         entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
         assetFileNames: '[name].[ext]',
       },
     },
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+    // optional: copy public folder
+    copyPublicDir: true,
   },
 })
