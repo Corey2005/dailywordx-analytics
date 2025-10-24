@@ -21,12 +21,17 @@
   <body>
     <div id="root"></div>
     <script>
-        if (localStorage.getItem('loggedIn') !== 'true') {
-            window.location.href = 'index.html';
+    // Simplified redirect logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+        if (!isLoggedIn) {
+            window.location.href = '/dailywordx-analytics/index.html';
         } else {
-            window.location.href = 'https://corey2005.github.io/dailywordx-analytics/dashboard.html';
+            // Load dashboard content or redirect to live React app
+            window.location.href = '/dailywordx-analytics/dashboard.html';
         }
-    </script>
+    });
+</script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
