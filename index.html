@@ -17,14 +17,14 @@
     </div>
     <script>
         async function sha256(str) {
-            const msg = new TextEncoder().encode(str + "analytics-salt-2025");
+            const msg = new TextEncoder().encode(str + "dailywordx");
             const hash = await crypto.subtle.digest('SHA-256', msg);
             return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('');
         }
         
         async function login() {
             const password = document.getElementById('pw').value;
-            const storedHash = '5f4dcc3b5aa765d61d8327deb882cf99'; // "password" hash (CHANGE THIS!)
+            const storedHash = 'eaa978cba3927c99d26d6628e006293da42162347f46258e34b20ad3537980f2'; // "password" hash (CHANGE THIS!)
             if (await sha256(password) === storedHash) {
                 localStorage.setItem('loggedIn', 'true');
                 window.location.href = 'dashboard.html';
