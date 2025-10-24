@@ -31,13 +31,13 @@
       if (await sha256(password) === storedHash) {
         localStorage.setItem('loggedIn', 'true');
         // redirect to the dashboard HTML file (full page load)
-        window.location.href = '/dailywordx-analytics/dashboard.html';
+        window.location.href = '/dailywordx-analytics/dashboard';
       } else {
         alert('Wrong password, bro!');
       }
     }
     if (localStorage.getItem('loggedIn') === 'true') {
-      window.location.href = '/dailywordx-analytics/dashboard.html';
+      window.location.href = '/dailywordx-analytics/dashboard';
     }
   </script>
 </body>
