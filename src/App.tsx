@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom"; // ⬅️ change here
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"; // Added Navigate
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -13,10 +13,16 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/dailywordx-analytics/">
+      <BrowserRouter basename="/dailywordx-analytics">
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* Protect dashboard route */}
+          <Route
+            path="/dashboard"
+            element={
+              localStorage.getItem('loggedIn') === 'true' ? <Index /> : <Navigate to="/index.html" />
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
