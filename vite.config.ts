@@ -10,8 +10,8 @@ export default defineConfig({
     assetsDir: '', // Flat structure
     rollupOptions: {
       input: {
-        main: 'index.html',       // Login page
-        dashboard: 'dashboard.html' // Dashboard with React
+        main: 'index.html',       // Login page (static)
+        dashboard: 'src/main.tsx' // React dashboard entry
       },
       output: {
         entryFileNames: '[name].js',
@@ -20,7 +20,7 @@ export default defineConfig({
         manualChunks: undefined,
       },
     },
-    copyPublicDir: true, // Ensure HTML files are copied
+    copyPublicDir: true, // Copy static files (index.html)
   },
   resolve: {
     alias: {
