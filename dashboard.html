@@ -28,9 +28,6 @@
         const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
         if (!isLoggedIn) {
             window.location.href = '/dailywordx-analytics/index.html';
-        } else {
-            // Load dashboard content or redirect to live React app
-            window.location.href = '/dailywordx-analytics/dashboard.html';
         }
     });
 </script>
