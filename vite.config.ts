@@ -11,7 +11,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',       // Login page (static)
-        dashboard: 'src/main.tsx' // React dashboard entry
+        dashboard: 'dashboard.html' // React dashboard entry
       },
       output: {
         entryFileNames: '[name].js',
