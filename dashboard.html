@@ -27,8 +27,9 @@
     document.addEventListener('DOMContentLoaded', () => {
         const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
         if (!isLoggedIn) {
-            window.location.href = '/dailywordx-analytics/index.html';
-        }
+            window.location.href = './index.html';
+        } else {
+          window.location.href = './dashboard.html';
     });
 </script>
   </body>
