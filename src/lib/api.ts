@@ -97,31 +97,39 @@ export const calculatePercentageIncrease = (
   days: number,
   metric: keyof Pick<AnalyticsOverTime, 'aotTotalPosts' | 'aotTotalViews' | 'aotTotalLikes' | 'aotTotalComments' | 'aotTotalShares'>
 ): string => {
-  if (!analyticsData || analyticsData.length < 2) return "+0%";
+   if (!analyticsData || analyticsData.length < days * 2) return "+0%";
   
-  const sortedData = [...analyticsData].sort((a, b) => 
-    new Date(a.aotDate).getTime() - new Date(b.aotDate).getTime()
-  );
+  const sortedData = [...analyticsData].sort((a, b) => {
+    const dateA = new Date(a.aotDate.split('/').reverse().join('-'));
+    const dateB = new Date(b.aotDate.split('/').reverse().join('-'));
+    return dateA.getTime() - dateB.getTime();
+  });
   
-  const latestData = sortedData[sortedData.length - 1];
-  const targetDate = new Date();
-  targetDate.setDate(targetDate.getDate() - days);
+  // Get the most recent 'days' worth of data
+  const currentPeriodData = sortedData.slice(-days);
   
-  const historicalData = sortedData.filter(d => 
-    new Date(d.aotDate) <= targetDate
-  );
+  // Get the previous 'days' worth of data (the period before current)
+  const previousPeriodData = sortedData.slice(-days * 2, -days);
   
-  if (historicalData.length === 0) {
+  if (currentPeriodData.length === 0 || previousPeriodData.length === 0) {
     return "+0%";
   }
   
-  const oldestInRange = historicalData[historicalData.length - 1];
-  const oldValue = oldestInRange[metric];
-  const newValue = latestData[metric];
+  // Sum the metric for current period
+  const currentTotal = currentPeriodData.reduce((sum, item) => 
+    sum + (Number(item[metric]) || 0), 0
+  );
   
-  if (oldValue === 0) return "+100%";
+  // Sum the metric for previous period
+  const previousTotal = previousPeriodData.reduce((sum, item) => 
+    sum + (Number(item[metric]) || 0), 0
+  );
   
-  const percentageChange = ((newValue - oldValue) / oldValue) * 100;
+  if (previousTotal === 0) {
+    return currentTotal > 0 ? "+100%" : "+0%";
+  }
+  
+  const percentageChange = ((currentTotal - previousTotal) / previousTotal) * 100;
   const sign = percentageChange >= 0 ? "+" : "";
   
   return `${sign}${percentageChange.toFixed(1)}%`;
